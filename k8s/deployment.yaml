@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: privatevault
-        image: privatevault:pilot-v1
+        image: privatevault:pilot-v2
         imagePullPolicy: IfNotPresent
         env:
         - name: PRIVATEVAULT_SIGNING_KEY
