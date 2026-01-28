@@ -1,0 +1,3 @@
+[submodule "interop/agent-frameworks"]
+	path = interop/agent-frameworks
+	url = https://github.com/LOLA0786/PrivateVaultAgentInterop
