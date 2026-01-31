@@ -6,8 +6,6 @@
 ## Overview
 Governance-Native Control Plane for Enterprise AI Systems
 
-## Overview
-
 This repository provides a production-grade pilot environment for evaluating PrivateVault — a governance-first infrastructure layer designed to make enterprise AI systems auditable, explainable, and regulator-ready by default.
 
 PrivateVault addresses a growing enterprise risk:
