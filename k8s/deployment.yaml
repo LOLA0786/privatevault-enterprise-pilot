@@ -16,15 +16,18 @@ spec:
       containers:
       - name: privatevault
         image: ghcr.io/lola0786/privatevault:pilot-v2
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
+        command:
+
+        - python
+
+        - /app/main_vault_integrated.py
         env:
         - name: PRIVATEVAULT_SIGNING_KEY
           valueFrom:
             secretKeyRef:
               name: privatevault-secrets
               key: PRIVATEVAULT_SIGNING_KEY
-        command: ["/app/privatevault"]
-        args: ["run", "demo"]
         resources:
           limits:
             cpu: "500m"
