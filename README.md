@@ -66,18 +66,24 @@ This enables long-term compliance, regulatory readiness, and forensic accountabi
 
 ## Architecture
 
-[Enterprise AI Agents / Pipelines]
-|
-v
-[PrivateVault Control Plane]
-|
-v
-[Signed Receipts + Audit Storage]
+ ## Architecture
 
-yaml
-Copy code
-
-PrivateVault operates as a governance and verification layer beneath existing AI systems.
+[ AI Agents / Pipelines ]
+          |
+          v
+[ Identity & Policy Engine ]
+          |
+          v
+[ PrivateVault Control Plane ]
+   - Signing & Attestation
+   - Evidence Generation
+   - Deterministic Replay
+          |
+          v
+[ Immutable Audit & Evidence Store ]
+          |
+          v
+[ Compliance / Risk / Review Systems ]
 
 ---
 
