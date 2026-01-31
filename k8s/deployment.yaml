@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: privatevault
-        image: privatevault:pilot-v2
+        image: ghcr.io/lola0786/privatevault:pilot-v2
         imagePullPolicy: IfNotPresent
         env:
         - name: PRIVATEVAULT_SIGNING_KEY
