@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
+<<<<<<< HEAD
 NAMESPACE="pv-pilot"
 APP_LABEL="app=privatevault"
 
@@ -25,3 +26,23 @@ fi
 echo "Running pytest in $POD"
 
 kubectl exec -it "$POD" -n $NAMESPACE -- pytest -q
+=======
+NS=pv-pilot
+
+echo "Waiting for pod..."
+
+POD=$(
+kubectl get pods -n $NS \
+-l app=privatevault \
+-o jsonpath='{.items[0].metadata.name}'
+)
+
+kubectl wait \
+--for=condition=Ready pod/$POD \
+-n $NS \
+--timeout=120s
+
+echo "Running pytest in $POD"
+
+kubectl exec -it $POD -n $NS -- pytest
+>>>>>>> a069eaf (Stabilize runtime: clean deps, fixed typing, stable deployment)
