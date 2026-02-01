@@ -33,7 +33,7 @@ kubectl config use-context kind-$CLUSTER
 
 # Build image
 echo "🐳 Building Docker image..."
-docker buildx build \
+docker build -t privatevault:demo -f runtime/Dockerfile runtime
   -t privatevault:demo \
   -f runtime/Dockerfile \
   runtime \
