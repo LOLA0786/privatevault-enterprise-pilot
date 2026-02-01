@@ -33,7 +33,8 @@ kubectl config use-context kind-$CLUSTER
 
 # Build image
 echo "🐳 Building Docker image..."
-docker build -t $IMAGE -f runtime/Dockerfile runtime .
+docker build -t $IMAGE -f runtime/Dockerfile runtime --load
+
 
 # Load image
 echo "📦 Loading image into kind..."
