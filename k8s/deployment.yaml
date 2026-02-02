@@ -4,7 +4,7 @@ metadata:
   name: privatevault
   namespace: pv-pilot
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: privatevault
@@ -15,23 +15,26 @@ spec:
     spec:
       containers:
       - name: privatevault
-        image: ghcr.io/lola0786/privatevault:pilot-v2
-        imagePullPolicy: Always
-        command:
+        image: privatevault:demo
+        imagePullPolicy: IfNotPresent
 
-        - python
+        ports:
+        - containerPort: 8000
 
-        - /app/main_vault_integrated.py
         env:
-        - name: PRIVATEVAULT_SIGNING_KEY
-          valueFrom:
-            secretKeyRef:
-              name: privatevault-secrets
-              key: PRIVATEVAULT_SIGNING_KEY
-        resources:
-          limits:
-            cpu: "500m"
-            memory: "512Mi"
-          requests:
-            cpu: "200m"
-            memory: "256Mi"
+        - name: DEMO_MODE
+          value: "true"
+
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 15
+          periodSeconds: 10
